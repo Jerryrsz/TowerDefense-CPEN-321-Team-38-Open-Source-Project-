@@ -306,6 +306,15 @@ void mouseOver() {
           } else if (button.text == TOWER_ID_NAMES[3]) {
             drawPopup(DESCRIPTION_AOE);
             hoverUpgradeIndex = 3;
+          } else if (button.text == TOWER_ID_NAMES[5]) {
+            drawPopup(DESCRIPTION_ARROW);
+            hoverUpgradeIndex = 4;
+          } else if (button.text == TOWER_ID_NAMES[6]) {
+            drawPopup(DESCRIPTION_CRIPPLE);
+            hoverUpgradeIndex = 5;
+          } else if (button.text == TOWER_ID_NAMES[7]) {
+            drawPopup(DESCRIPTION_CRIPPLE);
+            hoverUpgradeIndex = 6;
           }
         }
       }

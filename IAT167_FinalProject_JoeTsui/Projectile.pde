@@ -204,3 +204,65 @@ class LaserProjectile extends BuildingProjectile {
   }
 }
 
+class CrippleProjectile extends BuildingProjectile {
+
+  public CrippleProjectile(PVector pos, Enemy enemy, int damage) {
+    super(pos, enemy, damage);
+    this.radius = 3;
+    this.effectRadius = 15;
+    this.effectTime = 30;
+    this.speed = 12;
+    this.effectColor = color(145, 160, 255);
+  }
+
+  @Override
+    void draw() {
+    pushMatrix();
+    translate(pos.x, pos.y);
+    fill(effectColor);
+    rotate(vel.heading() - PI/2);
+    ellipse(0, 0, radius * 2, radius * 2);
+    fill(effectColor, 150);
+    triangle(-radius, 0, radius, 0, 0, -15);
+    popMatrix();
+  }
+  
+  void dealDamage() {
+    target.takeDamage(damage);
+    target.speed = target.speed * .80;
+  }
+  
+}
+
+class ArnoldProjectile extends BuildingProjectile {
+
+  public ArnoldProjectile(PVector pos, Enemy enemy, int damage) {
+    super(pos, enemy, damage);
+    this.radius = 3;
+    this.effectRadius = 15;
+    this.effectTime = 30;
+    this.speed = 12;
+    this.effectColor = color(145, 160, 255);
+  }
+
+  @Override
+    void draw() {
+    pushMatrix();
+    translate(pos.x, pos.y);
+    fill(effectColor);
+    rotate(vel.heading() - PI/2);
+    ellipse(0, 0, radius * 2, radius * 2);
+    fill(effectColor, 150);
+    triangle(-radius, 0, radius, 0, 0, -15);
+    popMatrix();
+  }
+  
+  void dealDamage() {
+    target.takeDamage(damage);
+  }
+  
+}
+
+
+
+

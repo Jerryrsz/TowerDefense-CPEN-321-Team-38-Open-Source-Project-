@@ -35,11 +35,16 @@ final int TOWER_ID_SNIPER = 1;
 final int TOWER_ID_RAPID = 2;
 final int TOWER_ID_AOE = 3;
 final int TOWER_ID_LASER = 4;
+final int TOWER_ID_ARROW = 5;
+final int TOWER_ID_CRIPPLE = 6;
+final int TOWER_ID_ARNOLD = 7;
 
 final float TOWER_ATTACK_RANGE_BASE = 3.5  * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_RANGE = 7 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_SPEED = 5 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_AOE = 4.5 * Space.SPACE_WIDTH;
+final float TOWER_ATTACK_RANGE_ARROW = 3 * Space.SPACE_WIDTH;
+final float TOWER_ATTACK_RANGE_CRIPPLE = 3 * Space.SPACE_WIDTH;
 
 final String TEXT_BUTTON_WAVE = "Next Wave";
 final String TEXT_BUTTON_TOWER = "Tower (t) - " + GOLD_BASEBUILDING_COST + "G";
@@ -58,6 +63,15 @@ final String[] DESCRIPTION_SPEED = {
 };
 final String[] DESCRIPTION_AOE = {
   "AOE tower", "\n", "Deals damage to surrounding units", "Good for groups of enemies"
+};
+final String[] DESCRIPTION_ARROW = {
+  "AOE tower", "\n", "Deals reduced damage to ALL surrounding enemies."
+};
+final String[] DESCRIPTION_CRIPPLE = {
+  "CC tower", "\n", "Deals reduced damage to single target, and slows them permanently. Target enemies for full effect."
+};
+final String[] DESCRIPTION_ARNOLD = {
+  "GG tower", "\n", "Get to the chopper. Now."
 };
 final String DESCRIPTION_GRUNT1 = "A lowly grunt."; 
 final String DESCRIPTION_GRUNT2 = "Paid $10.25/hr";  
@@ -86,7 +100,7 @@ final String[] TIPS_LEVEL4 = {
 final float TARGETED_DAMAGE_AMP = 1.1;
 
 final String[] TOWER_ID_NAMES = {
-  "Stock", "Range", "Speed", "AOE", "Laser"
+  "Stock", "Range", "Speed", "AOE", "Laser", "Arrow", "Cripple", "ARNOLD"
 };
 
 final int GAMESTATE_GAMEPLAY = 0;
