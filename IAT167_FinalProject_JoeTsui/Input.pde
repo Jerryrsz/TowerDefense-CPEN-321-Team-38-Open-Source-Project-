@@ -9,6 +9,9 @@ class UI {
   ArrayList<Button> buttons = new ArrayList<Button>();
   ArrayList<UIPanel> panels = new ArrayList<UIPanel>();
 
+  Button easyBtn;
+  Button normalBtn;
+  Button hardBtn;
   Button nextWaveBtn;
   Button buildingBtn;
   UIPanel buildingPnl;
@@ -375,6 +378,25 @@ void mousePressed() {
 
   if (gameState == GAMESTATE_GAMEPLAY) {
     mousePressedGameplay();
+  } /*else if (gameState == GAMESTATE_MENU) {
+    // if the player choses normal mode
+    if (mouseX > (width/2 - 85) && mouseX< (width/2 + 85) && mouseY > (height/2 + 160) && mouseY < (height/2 + 60)) {
+      difficulty = normal;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }  // if the player choses easy mode 
+    else if (mouseX > (width/2 - 285) && mouseX < (width/2 - 115) && mouseY > (height/2 + 160) && mouseY < (height/2 + 60)) {
+      difficulty = easy;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }  // if the player choses hard mode
+    else if(mouseX > (width/2 + 115) && mouseX < (width/2 + 285) && mouseY > (height/2 + 160) && mouseY < (height/2 + 60)) {
+      difficulty = hard;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }
+  } */ else if (gameState == GAMESTATE_MENU) {
+    menu();
   } else {
     resetGame();
     gameState = GAMESTATE_GAMEPLAY;
