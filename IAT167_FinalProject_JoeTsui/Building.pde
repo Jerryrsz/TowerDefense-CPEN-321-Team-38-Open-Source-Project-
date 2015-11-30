@@ -35,6 +35,8 @@ class Building {
     upgradePaths.add(TOWER_ID_SNIPER);
     upgradePaths.add(TOWER_ID_RAPID);
     upgradePaths.add(TOWER_ID_AOE);
+    upgradePaths.add(TOWER_ID_ARROW);
+    upgradePaths.add(TOWER_ID_CRIPPLE);
   }
 
   Building upgrade(int TOWER_ID) {
@@ -54,6 +56,15 @@ class Building {
       break;
     case TOWER_ID_LASER:
       tempBuilding = new LaserBuilding(this);
+      break;
+    case TOWER_ID_ARROW:
+      tempBuilding = new TeslaBuilding(this);
+      break;
+    case TOWER_ID_CRIPPLE:
+      tempBuilding = new CrippleBuilding(this);
+      break;
+    case TOWER_ID_ARNOLD:
+      tempBuilding = new ArnoldBuilding(this);
       break;
     default:
       return null;
@@ -96,7 +107,7 @@ class Building {
   }
 
   boolean checkEnemy(Enemy enemy) {
-    return (enemy.state == STATE_READY) && (PVector.dist(pos, enemy.pos) < attackRadius);
+    return (enemy.state == STATE_READY) && (PVector.dist(pos, enemy.pos) < attackRadius) ;
   }
 
   void updateProjectiles() {
@@ -130,6 +141,9 @@ class Building {
       fill(255, 200, 200, 126);
       ellipse(0, 0, TOWER_ATTACK_RANGE_SPEED * 2, TOWER_ATTACK_RANGE_SPEED* 2);
     } else if (upgradeIndex == 3) {
+      fill(255, 200, 200, 126);
+      ellipse(0, 0, TOWER_ATTACK_RANGE_AOE * 2, TOWER_ATTACK_RANGE_AOE * 2);
+    } else if (upgradeIndex == 5) {
       fill(255, 200, 200, 126);
       ellipse(0, 0, TOWER_ATTACK_RANGE_AOE * 2, TOWER_ATTACK_RANGE_AOE * 2);
     }
