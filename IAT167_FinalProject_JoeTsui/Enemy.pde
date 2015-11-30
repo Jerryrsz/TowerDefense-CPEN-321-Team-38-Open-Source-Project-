@@ -192,7 +192,7 @@ class Demacia extends Enemy {
 
   public Demacia(Node node, int buffFactor) {
     super(node, buffFactor);
-    this.BASE_MAX_HEALTH = 00;
+    this.BASE_MAX_HEALTH = 1000;
     this.GOLD_DROP = GOLD_DEMACIA_DROP;
     this.speed = 0.8;
     this.radius = 20;
