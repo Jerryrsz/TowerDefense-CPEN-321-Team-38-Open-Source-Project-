@@ -182,6 +182,106 @@ class Grunt extends Enemy {
     popMatrix();
   }
 }
+class Demacia extends Enemy {
+
+  public Demacia(Node node) {
+    super(node, 1);
+  }
+
+  public Demacia(Node node, int buffFactor) {
+    super(node, buffFactor);
+    this.BASE_MAX_HEALTH = 00;
+    this.GOLD_DROP = GOLD_DEMACIA_DROP;
+    this.speed = 0.8;
+    this.radius = 20;
+    this.bodyColor = color(255, 215, 0);
+    setMaxAndCurrHealth(BASE_MAX_HEALTH * buffFactor);
+  }
+
+  @Override
+    void drawHat() {
+    float alphaFactor = 255;
+    if (state == STATE_DEAD) {
+      alphaFactor = 255 * (1 - (timer / (float) TIME_IN_STATE_DEAD));
+    }
+
+   pushMatrix();
+    translate(0, -radius * .1);
+    stroke(0, alphaFactor);
+    fill(210, 160, 10, alphaFactor);
+    arc(0, 0, radius * 1.9, radius * 1.8, PI, PI * 2);
+    // HORNS
+    fill(100, 80, 0, alphaFactor);
+    beginShape();
+    curveVertex(-radius * 2, -radius * 1.5);
+    curveVertex(radius / 2, -radius * 3 / 4);
+    curveVertex(radius, -radius);
+    curveVertex(radius * 7 / 8, -radius / 4);
+    curveVertex(-radius, radius * 2);
+    endShape();
+
+    beginShape();
+    curveVertex(radius * 2, -radius * 1.5);
+    curveVertex(-radius / 2, -radius * 3 / 4);
+    curveVertex(-radius, -radius);
+    curveVertex(-radius * 7 / 8, -radius / 4);
+    curveVertex(radius, radius * 2);
+    endShape();
+    line(-radius * .9, 0, radius * .9, 0);
+    noStroke();
+    popMatrix();
+  }
+}
+class Corki extends Enemy {
+
+  public Corki(Node node) {
+    super(node, 1);
+  }
+
+  public Corki(Node node, int buffFactor) {
+    super(node, buffFactor);
+    this.BASE_MAX_HEALTH = 100;
+    this.GOLD_DROP = GOLD_CORKI_DROP;
+    this.speed = 1.0;
+    this.radius = 30;
+    this.bodyColor = color(0, 0, 0);
+    setMaxAndCurrHealth(BASE_MAX_HEALTH * buffFactor);
+  }
+
+  @Override
+    void drawHat() {
+    float alphaFactor = 255;
+    if (state == STATE_DEAD) {
+      alphaFactor = 255 * (1 - (timer / (float) TIME_IN_STATE_DEAD));
+    }
+
+   pushMatrix();
+    translate(0, -radius * .1);
+    stroke(0, alphaFactor);
+    fill(210, 160, 10, alphaFactor);
+    arc(0, 0, radius * 1.9, radius * 1.8, PI, PI * 2);
+    // HORNS
+    fill(100, 80, 0, alphaFactor);
+    beginShape();
+    curveVertex(-radius * 2, -radius * 1.5);
+    curveVertex(radius / 2, -radius * 3 / 4);
+    curveVertex(radius, -radius);
+    curveVertex(radius * 7 / 8, -radius / 4);
+    curveVertex(-radius, radius * 2);
+    endShape();
+
+    beginShape();
+    curveVertex(radius * 2, -radius * 1.5);
+    curveVertex(-radius / 2, -radius * 3 / 4);
+    curveVertex(-radius, -radius);
+    curveVertex(-radius * 7 / 8, -radius / 4);
+    curveVertex(radius, radius * 2);
+    endShape();
+    line(-radius * .9, 0, radius * .9, 0);
+    noStroke();
+    popMatrix();
+  }
+}
 
 class Zerg extends Enemy {
 
@@ -532,7 +632,162 @@ public class Boss extends Enemy {
     popMatrix();
   }
 }
+public class Voodoo extends Enemy {
 
+  int actionRadius = 125;
+  float healAmount = .02;
+  int actionTimer = 0;
+  int ACTION_WAIT_TIME = 120;
+  int recoveryTimer = 0;
+  int RECOVERY_TIME = 60;
+
+  public Voodoo(Node node) {
+    super(node, 1);
+  }
+
+  public Voodoo(Node node, int buffFactor) {
+    super(node, buffFactor);
+    this.BASE_MAX_HEALTH = 150;
+    this.GOLD_DROP = 0;
+    this.speed = .4;
+    this.radius = 12;
+    setMaxAndCurrHealth(BASE_MAX_HEALTH * buffFactor);
+    this.actionTimer = ACTION_WAIT_TIME;
+    this.bodyColor = color(120, 0, 0);
+    recoveryTimer = -1;
+  }
+
+  @Override
+    void update() {
+    if (state == STATE_READY) {
+      move();
+      if (actionTimer <= 0) {
+        if (actionTimer == 0) {
+          recoveryTimer = RECOVERY_TIME;
+          actionTimer--;
+        }
+        if (recoveryTimer == 0) {
+          actionTimer = ACTION_WAIT_TIME;
+        }
+        healNearbyEnemies();
+        recoveryTimer--;
+      } else {
+        actionTimer--;
+      }
+    } else if (state == STATE_DEAD) {
+      if (timer == TIME_IN_STATE_DEAD) {
+        state = STATE_REMOVE;
+      }
+      actionTimer = ACTION_WAIT_TIME;
+    }
+    timer++;
+  }
+
+  @Override
+    void draw() {
+    pushMatrix();
+    translate(pos.x, pos.y);
+    drawEnemy();
+    popMatrix();
+    drawHealthBar();
+  }
+
+  void healNearbyEnemies() {
+    if (recoveryTimer % 15 == 0) {
+      for (Enemy enemy : enemyList) {
+        if (PVector.dist(enemy.pos, pos) < actionRadius) {
+          if (enemy != this) {
+            healEnemy(enemy);
+          }
+        }
+      }
+    }
+  }
+
+  void healEnemy(Enemy enemy) {
+    int healedAmount = (int)(enemy.maxHealth * healAmount);
+    addTextEffect("+" + healedAmount, color(0, 255, 0), enemy.pos.x, enemy.pos.y, 30, LEFT);
+    enemy.currentHealth += healedAmount;
+    if (enemy.currentHealth > enemy.maxHealth) {
+      enemy.currentHealth = enemy.maxHealth;
+    }
+  }
+
+  @Override
+    void drawHealthBar() {
+    pushMatrix();
+    translate(width/2, height/16);
+    fill(0);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Voodoo", 0, -15);
+    noFill();
+    stroke(0);
+    strokeWeight(2);
+    float healthBarWidth = Space.SPACE_WIDTH * 8;    
+    rect(-healthBarWidth/2.0, 0, healthBarWidth, healthBarWidth/12.0);
+    noStroke();
+    fill(255, 0, 0);
+    rect(-healthBarWidth/2.0, 0, healthBarWidth * healthPercent, healthBarWidth/12.0);
+    textSize(12);
+    textAlign(CENTER, CENTER);
+    fill(0, 200);
+    text(this.currentHealth + "/" + this.maxHealth, healthBarWidth / 3, healthBarWidth / 8);
+    popMatrix();
+  }
+
+  @Override
+    void drawEnemy() {
+    if (actionTimer < 0) {
+      float effectPercent = 1 - (recoveryTimer / (float)RECOVERY_TIME);
+      fill(0, 128, 0, 25 + (50 * effectPercent));
+      float effectWidth = actionRadius * 2 * ((effectPercent * .25) + .95);
+      ellipse(0, 0, effectWidth, effectWidth);
+    }
+    pushMatrix();
+    if (state == STATE_READY) {
+      float translationY = abs(sin(timer / (5 - (speed/1.5))) * radius * .25);
+      translate(0, translationY);
+    }
+    drawBase();
+    drawHat();
+    popMatrix();
+  }
+
+  @Override
+    void drawHat() {
+    float alphaFactor = 255;
+    if (state == STATE_DEAD) {
+      alphaFactor = 255 * (1 - (timer / (float) TIME_IN_STATE_DEAD));
+    }
+
+    pushMatrix();
+    translate(0, -radius * .3);
+    stroke(0, alphaFactor);
+    fill(255, 255, 50, alphaFactor);
+    beginShape();
+    vertex(-radius, 0);
+    vertex(-radius * 1.25, -radius);
+    vertex(-radius * .65, -radius * .65);
+    vertex(0, -radius * 1.25);
+    vertex(radius * .65, -radius * .65);
+    vertex(radius * 1.25, -radius);
+    vertex(radius, 0);
+    curveVertex(radius * 1.25, -radius);
+    curveVertex(radius, 0);
+    curveVertex(-radius, 0);
+    curveVertex(-radius * 1.25, -radius);
+    endShape();
+    fill(255, 0, 0, alphaFactor);
+    ellipse(-radius * 1.25, -radius, radius * .25, radius * .25);
+    ellipse(0, -radius * 1.25, radius * .25, radius * .25);
+    ellipse(radius * 1.25, -radius, radius * .25, radius * .25);
+    fill(220, 50, 50, alphaFactor);
+    ellipse(0, -radius * .5, radius * .5, radius * .5);
+    noStroke();
+    popMatrix();
+  }
+}
 class Wave {
 
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -551,6 +806,12 @@ class Wave {
         case ENEMY_INDEX_GRUNT:
           enemies.add(new Grunt(AIPath, level));
           break;
+          case ENEMY_INDEX_DEMACIA:
+          enemies.add(new Demacia(AIPath, level));
+          break;
+          case ENEMY_INDEX_CORKI:
+          enemies.add(new Corki(AIPath, level));
+          break;
         case ENEMY_INDEX_ZERG:
           enemies.add(new Zerg(AIPath, level));
           break;
@@ -562,6 +823,9 @@ class Wave {
           break;
         case ENEMY_INDEX_BOSS:
           enemies.add(new Boss(AIPath, level));
+          break;
+          case ENEMY_INDEX_VOODOO:
+          enemies.add(new Voodoo(AIPath, level));
           break;
         }
       }
@@ -588,4 +852,3 @@ class Wave {
     }
   }
 }
-
