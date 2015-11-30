@@ -1,3 +1,7 @@
+final int easy = 1;
+final int normal = 2;
+final int hard = 3;
+
 final char GRID_SPACE = ' ';
 final char GRID_ROADSPACE = 'R';
 final char GRID_STARTSPACE = 'S';
@@ -11,7 +15,7 @@ final int STATE_REMOVE = 2;
 final int TIME_IN_STATE_DEAD = 45;
 
 // 500
-final int GOLD_STARTING = 500;
+int GOLD_STARTING;
 final int GOLD_BASEBUILDING_COST = 100;
 final int GOLD_BASEUPGRADE_COST = 125;
 final int GOLD_SWITCHUPGRADE_COST = 50;
@@ -122,6 +126,7 @@ final String[] TOWER_ID_NAMES = {
 final int GAMESTATE_GAMEPLAY = 0;
 final int GAMESTATE_GAMEOVER = 1;
 final int GAMESTATE_GAMEWON = 2;
+final int GAMESTATE_MENU = 3;
 
 final int TIME_WAVESPAWN_NORMAL = 10 * 60;
 final int TIME_WAVESPAWN_LEVEL = 25 * 60;

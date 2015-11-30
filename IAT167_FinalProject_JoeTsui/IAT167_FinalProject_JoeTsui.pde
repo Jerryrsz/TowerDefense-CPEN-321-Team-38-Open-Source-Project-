@@ -14,8 +14,9 @@ Node AIPath;
 
 int gameState;
 int level = 1;
-int playerShields = 5;
+int playerShields;
 int waveTimer = 0;
+int difficulty;
 
 int numMaxWaves = 0;
 ArrayList<Wave> enemyWaves = null;
@@ -26,7 +27,7 @@ boolean spawnWave;
 
 void setup() {
   waveTimer = TIME_WAVESPAWN_START;
-  gameState = GAMESTATE_GAMEPLAY;
+  gameState = GAMESTATE_MENU;
   int spaceSizeX = Space.SPACE_WIDTH;
   int spaceSizeY = Space.SPACE_HEIGHT;
   loadGameLevel(level);
@@ -43,7 +44,13 @@ void resetGame() {
   AIPath = null;
 
   level = 1;
-  playerShields = 5;
+  if (difficulty == easy) {
+    playerShields = 7;
+  } else if (difficulty == normal) {
+    playerShields = 5;
+  } else if (difficulty == hard) {
+    playerShields = 3;
+  }
   waveTimer = TIME_WAVESPAWN_START;
 
   numMaxWaves = 0;
@@ -76,6 +83,9 @@ void loadGameLevel(int num) {
 
 void draw() {
   switch (gameState) {
+  case GAMESTATE_MENU:
+    menu();
+    break;
   case GAMESTATE_GAMEPLAY:
     gameplay();
     break;
@@ -201,6 +211,43 @@ void removePlayerShields() {
   if (playerShields <= 0) {
     gameState = GAMESTATE_GAMEOVER;
   }
+}
+
+
+void menu() {
+  background(85, 200, 200);
+  textAlign(CENTER, CENTER);
+  textSize(80);
+  fill(255);
+  text("Tower Defense!", width/2, height/2 - 100);
+  textSize(35);
+  text("Select your difficulty: ", width/2, height/2);
+  text("Easy", width/2 - 200, height/2 + 100);
+  text("Normal", width/2, height/2 + 100);
+  text("Hard", width/2 + 200, height/2 + 100);
+  textSize(10);
+  text("Start with 7 lives and 700 gold", width/2 - 200, height/2 + 135);
+  text("Start with 5 lives and 500 gold", width/2, height/2 + 135);
+  text("Start with 3 lives and 300 gold", width/2 + 200, height/2 + 135);
+    // if the player choses normal mode
+    if (mouseX > (width/2 - 85) && mouseX < (width/2 + 85) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
+      difficulty = normal;
+      GOLD_STARTING = 500;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }  // if the player choses easy mode 
+    else if (mouseX > (width/2 - 285) && mouseX < (width/2 - 115) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
+      difficulty = easy;
+      GOLD_STARTING = 700;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }  // if the player choses hard mode
+    else if(mouseX > (width/2 + 115) && mouseX < (width/2 + 285) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
+      difficulty = hard;
+      GOLD_STARTING = 300;
+      resetGame();
+      gameState = GAMESTATE_GAMEPLAY;
+    }
 }
 
 void showGameOverScreen() {
