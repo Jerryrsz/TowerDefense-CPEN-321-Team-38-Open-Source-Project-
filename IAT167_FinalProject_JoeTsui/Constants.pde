@@ -21,6 +21,9 @@ final int GOLD_ZERG_DROP = 20;
 final int GOLD_TANK_DROP = 35;
 final int GOLD_SHIELDBRO_DROP = 40;
 final int GOLD_BOSS_DROP = 500;
+final int GOLD_DEMACIA_DROP = 1000;
+final int GOLD_CORKI_DROP = 100;
+final int GOLD_VOODOO_DROP = 75;
 
 final int SCORE_SHIELD = 250;
 
@@ -29,6 +32,9 @@ final int ENEMY_INDEX_ZERG = 1;
 final int ENEMY_INDEX_TANK = 2;
 final int ENEMY_INDEX_SHIELDBRO = 3;
 final int ENEMY_INDEX_BOSS = 4;
+final int ENEMY_INDEX_DEMACIA = 5;
+final int ENEMY_INDEX_CORKI = 6;
+final int ENEMY_INDEX_VOODOO = 7;
 
 final int TOWER_ID_BASE = 0;
 final int TOWER_ID_SNIPER = 1;
@@ -83,6 +89,12 @@ final String DESCRIPTION_SHIELDBRO1 = "Has a shield that";
 final String DESCRIPTION_SHIELDBRO2 = "regenerates over time";
 final String DESCRIPTION_BOSS1 = "Real friendly guy"; 
 final String DESCRIPTION_BOSS2 = "that heals enemies";  
+final String DESCRIPTION_DEMACIA1 = "A troll with hugh gold drop";
+final String DESCRIPTION_DEMACIA2 = "have fun";
+final String DESCRIPTION_CORKI1 = "An acrobat performer.";
+final String DESCRIPTION_CORKI2 = "it's gigantic";
+final String DESCRIPTION_VOODOO1 = "Charlatan that heals nearby minions.";
+final String DESCRIPTION_VOODOO2 = "it's maroon";
 
 final String[] TIPS_LEVEL1 = {
   "Place towers on the grid!", "Click on one to select it,", "Upgrade your towers!"
