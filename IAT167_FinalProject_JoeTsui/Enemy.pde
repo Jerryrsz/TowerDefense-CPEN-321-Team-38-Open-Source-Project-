@@ -8,6 +8,7 @@ class Enemy extends Actor {
   PVector moveVector;
   float speed;
   boolean end;
+  boolean hidden;
   int radius = 7;
   color bodyColor = color(255, 200, 200);
 
@@ -22,6 +23,7 @@ class Enemy extends Actor {
     this.nextNode = node.next.get(0);
     this.moveVector = node.unitVectors.get(0);
     this.GOLD_DROP = 0;
+    this.hidden = false;
     setMaxAndCurrHealth(BASE_MAX_HEALTH * buffFactor);
   }
 
