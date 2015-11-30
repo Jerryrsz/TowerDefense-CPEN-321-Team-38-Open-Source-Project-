@@ -350,7 +350,22 @@ void mouseOver() {
               title = "Boss";
               description1 = DESCRIPTION_BOSS1;
               description2 = DESCRIPTION_BOSS2;
-            } else {
+            } 
+            else if (enemy.getClass() == Demacia.class) {
+              title = "Demacia";
+              description1 = DESCRIPTION_DEMACIA1;
+              description2 = DESCRIPTION_DEMACIA2;
+            }
+              else if (enemy.getClass() == Corki.class) {
+              title = "Corki";
+              description1 = DESCRIPTION_CORKI1;
+              description2 = DESCRIPTION_CORKI2;
+             
+            } else if (enemy.getClass() == Voodoo.class) {
+              title = "Voodoo";
+              description1 = DESCRIPTION_VOODOO1;
+              description2 = DESCRIPTION_VOODOO2;
+            }else {
               title = "";
               description1 = "";
               description2 = "";
