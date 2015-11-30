@@ -217,9 +217,9 @@ void removePlayerShields() {
 void menu() {
   background(85, 200, 200);
   textAlign(CENTER, CENTER);
-  textSize(50);
+  textSize(80);
   fill(255);
-  text("Welcome to Tower Defense!", width/2, height/2 - 100);
+  text("Tower Defense!", width/2, height/2 - 100);
   textSize(35);
   text("Select your difficulty: ", width/2, height/2);
   text("Easy", width/2 - 200, height/2 + 100);

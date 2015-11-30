@@ -412,7 +412,7 @@ void mousePressed() {
     menu();
   } else {
     resetGame();
-    gameState = GAMESTATE_GAMEPLAY;
+    gameState = GAMESTATE_MENU;
   }
 }
 
