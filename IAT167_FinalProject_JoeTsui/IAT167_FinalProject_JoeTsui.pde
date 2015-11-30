@@ -14,7 +14,7 @@ Node AIPath;
 
 int gameState;
 int level = 1;
-int playerShields = 6;
+int playerShields = 5;
 int waveTimer = 0;
 
 int numMaxWaves = 0;
