@@ -7,7 +7,7 @@ class LaserBuilding extends Building {
   public LaserBuilding(float x, float y) {
     super(x, y);
     attackRadius = 4.5 * Space.SPACE_WIDTH;
-    PROJECTILE_DAMAGE = 1;
+    PROJECTILE_DAMAGE = 7;
     SHOT_TIMER = 5;
   }
 

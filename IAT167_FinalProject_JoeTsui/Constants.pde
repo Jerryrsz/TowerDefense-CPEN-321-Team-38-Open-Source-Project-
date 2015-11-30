@@ -49,6 +49,7 @@ final float TOWER_ATTACK_RANGE_BASE = 3.5  * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_RANGE = 7 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_SPEED = 5 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_AOE = 4.5 * Space.SPACE_WIDTH;
+final float TOWER_ATTACK_RANGE_LASER = 4.5 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_ARROW = 3 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_CRIPPLE = 3 * Space.SPACE_WIDTH;
 
@@ -69,6 +70,9 @@ final String[] DESCRIPTION_SPEED = {
 };
 final String[] DESCRIPTION_AOE = {
   "AOE tower", "\n", "Deals damage to surrounding units", "Good for groups of enemies"
+};
+final String[] DESCRIPTION_LASER = {
+  "DESTRUCTION TOWER", "\n", "DESTRUCTION"
 };
 final String[] DESCRIPTION_ARROW = {
   "AOE tower", "\n", "Deals reduced damage to ALL surrounding enemies."

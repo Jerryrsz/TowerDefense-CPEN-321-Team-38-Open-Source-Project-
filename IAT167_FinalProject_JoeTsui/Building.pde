@@ -35,8 +35,6 @@ class Building {
     upgradePaths.add(TOWER_ID_SNIPER);
     upgradePaths.add(TOWER_ID_RAPID);
     upgradePaths.add(TOWER_ID_AOE);
-    upgradePaths.add(TOWER_ID_ARROW);
-    upgradePaths.add(TOWER_ID_CRIPPLE);
   }
 
   Building upgrade(int TOWER_ID) {

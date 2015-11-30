@@ -188,8 +188,20 @@ class LaserProjectile extends BuildingProjectile {
 
   @Override 
     void draw() {
+      pushMatrix();
+      stroke(255,0,0);
+      line(pos.x, pos.y, target.pos.x, target.pos.y);
+      stroke(0,0,0);
+      
+   
+      int newx = pos.x + (target.pos.x - pos.x)*.25;
+      int newy = pos.y + (target.pos.y - pos.y)*.25;
+      ellipse(newx,newy, 50, 50);
+      
+      noStroke();
+      popMatrix();
   }
-
+  
   @Override
     Effect getProjectileEffect() {
     return new Effect(pos.x, pos.y, effectTime) {
@@ -202,6 +214,8 @@ class LaserProjectile extends BuildingProjectile {
       }
     };
   }
+ 
+
 }
 
 class CrippleProjectile extends BuildingProjectile {

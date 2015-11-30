@@ -13,9 +13,6 @@ class SniperBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_RAPID);
-    upgradePaths.add(TOWER_ID_AOE);
-    upgradePaths.add(TOWER_ID_ARROW);
   }
 
   @Override
@@ -63,9 +60,9 @@ class RapidBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_SNIPER);
-    upgradePaths.add(TOWER_ID_AOE);
-    upgradePaths.add(TOWER_ID_ARROW);
+    upgradePaths.add(TOWER_ID_LASER);
+    upgradePaths.add(TOWER_ID_ARNOLD);
+  
   }
 
   @Override
@@ -96,8 +93,6 @@ class AOEBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_SNIPER);
-    upgradePaths.add(TOWER_ID_RAPID);
     upgradePaths.add(TOWER_ID_ARROW);
   }
 
@@ -161,9 +156,6 @@ class TeslaBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_SNIPER);
-    upgradePaths.add(TOWER_ID_RAPID);
-    upgradePaths.add(TOWER_ID_AOE);
     upgradePaths.add(TOWER_ID_ARNOLD);
   }
 
@@ -234,9 +226,6 @@ class CrippleBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_SNIPER);
-    upgradePaths.add(TOWER_ID_RAPID);
-    upgradePaths.add(TOWER_ID_AOE);
     upgradePaths.add(TOWER_ID_ARNOLD);
   }
 
@@ -321,6 +310,34 @@ class ArnoldBuilding extends Building {
     void shootAt(Enemy enemy, boolean targeted) {
       projectiles.add(new ArnoldProjectile(projectileStartPos, enemy, PROJECTILE_DAMAGE));
     }
+    
+      @Override
+  void drawGem(float gemAlpha) {
+    
+    stroke(0);
+    strokeWeight(1);
+    float baseLength = -Space.SPACE_WIDTH * .28;
+    float c1 = 0.309 * baseLength;
+    float c2 = 0.809 * baseLength;
+    float s1 = 0.951 * baseLength;
+    float s2 = 0.588 * baseLength;
+    fill(0);
+    beginShape();
+    vertex(0, baseLength);
+    vertex(s1, c1);
+    vertex(s2, -c2);
+    vertex(-s2, -c2);
+    vertex(-s1, c1);
+    endShape(CLOSE);
+    fill(255, 120, 120, gemAlpha);
+    beginShape();
+    vertex(0, baseLength);
+    vertex(s1, c1);
+    vertex(s2, -c2);
+    vertex(-s2, -c2);
+    vertex(-s1, c1);
+    endShape(CLOSE);
+  }
   
   
 }
