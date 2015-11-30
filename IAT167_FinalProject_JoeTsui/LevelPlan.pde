@@ -130,10 +130,10 @@ class LevelPlan {
     int[][] waveNumbers = new int[][] 
     {
       {
-        3, 0, 0, 0, 0
+        3, 0, 0, 0, 0, 1, 0, 0
       }
       , {
-        3, 2, 0, 0, 0
+        3, 2, 0, 0, 0, 0, 0, 0
       }
     };
     for (int i = 0; i < waveNumbers.length; i++) {
@@ -145,13 +145,13 @@ class LevelPlan {
     int[][] waveNumbers = new int[][] 
     {
       {
-        4, 2, 0, 0, 0
+        4, 2, 0, 0, 0, 1, 1, 1
       }
       , {
-        3, 1, 0, 1, 0
+        3, 1, 0, 1, 0, 1, 1, 1
       }
       , {
-        2, 2, 1, 1, 0
+        2, 2, 1, 1, 0, 3 ,2, 1
       }
     };
     for (int i = 0; i < waveNumbers.length; i++) {
@@ -163,16 +163,16 @@ class LevelPlan {
     int[][] waveNumbers = new int[][] 
     {
       {
-        5, 3, 0, 1, 0
+        5, 3, 0, 1, 0, 1, 1, 1
       }
       , {
-        6, 2, 1, 0, 0
+        6, 2, 1, 0, 0, 0, 2, 1
       }
       , {
-        2, 9, 1, 1, 0
+        2, 9, 1, 1, 0, 0, 1, 4
       }
       , {
-        5, 4, 2, 3, 0
+        5, 4, 2, 3, 0, 1, 1, 1
       }
     };
     for (int i = 0; i < waveNumbers.length; i++) {
@@ -184,13 +184,13 @@ class LevelPlan {
     int[][] waveNumbers = new int[][] 
     {
       {
-        6, 6, 0, 2, 0
+        6, 6, 0, 2, 0, 1, 1, 1, 1
       }
       , {
-        12, 7, 4, 3, 0
+        12, 7, 4, 3, 0, 1, 1, 2, 3
       }
       , {
-        12, 6, 5, 5, 1
+        12, 6, 5, 5, 1, 10, 13, 13, 13
       }
     };
     for (int i = 0; i < waveNumbers.length; i++) {
