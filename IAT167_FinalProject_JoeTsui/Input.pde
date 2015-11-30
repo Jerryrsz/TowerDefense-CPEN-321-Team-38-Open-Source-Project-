@@ -101,7 +101,13 @@ class UI {
     pushMatrix();
     translate(10, 10);
     fill(85, 85, 200, 200);
-    rect(0, 0, 150, 30);
+    if (difficulty == easy) {
+      rect(0, 0, 220, 30);
+    } else if (difficulty == normal) {
+      rect(0, 0, 150, 30);
+    } else if (difficulty == hard) {
+      rect(0, 0, 95, 30);
+    }
     int shieldSpace = 30;
     translate(shieldSpace / 2, 15);
     stroke(0);
