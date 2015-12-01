@@ -173,6 +173,7 @@ class LaserProjectile extends BuildingProjectile {
   public LaserProjectile(Enemy target, PVector startPos, float range, int damage) {
     super(startPos, target, damage);
     this.range = range;
+    
   }
 
   @Override
@@ -195,7 +196,7 @@ class LaserProjectile extends BuildingProjectile {
       stroke(0,0,0);
       noStroke();
    
-      laserEffects();
+       laserEffects();
       
       noStroke();
       popMatrix();
@@ -216,22 +217,46 @@ class LaserProjectile extends BuildingProjectile {
   
   void laserEffects () {
       float newx, newy, newy2, amp;
-      float theta = 0.00;
+      float theta = 0;
       amp = 5;
-      int edge = (int) sqrt((target.pos.x - pos.x)*(target.pos.x - pos.x) + (target.pos.y - pos.y)*(target.pos.y - pos.y));
+      int edge = (int) sqrt((abs(target.pos.x - pos.x))*(abs(target.pos.x - pos.x)) + (abs(target.pos.y - pos.y))*(abs(target.pos.y - pos.y)));
       float dx = (TWO_PI / edge);
       float x = 0;
       float rotangle;
-      rotangle = atan(tan((target.pos.y - pos.y)/(target.pos.x - pos.x)));
+      float o = abs(target.pos.y - pos.y);
+      float a = abs(target.pos.x - pos.x);
+      float oa = o/a;
+      
+      rotangle = atan(o/a);
       for (int i = 0; i < edge; i++) {
-        newy = sin(x)*amp;
-        newy2 = -sin(x)*amp;
+      
+        newy = sin(x+theta)*amp;
+        newy2 = -sin(x+theta)*amp;
         x += dx;
         
-        stroke(0,137,255);
-        point(pos.x + (i*cos(rotangle) - newy*sin(rotangle)),pos.y + (i*sin(rotangle) + newy*cos(rotangle)));
-        stroke(0,137,255);
-        point(pos.x + (i*cos(rotangle) - newy2*sin(rotangle)),pos.y + (i*sin(rotangle) + newy2*cos(rotangle)));
+        float xinc;
+        if ( (target.pos.x - pos.x) < 0 )
+          xinc = -i;
+        else
+          xinc = i;
+        
+        float xdif = (target.pos.x - pos.x);
+        float ydif = (target.pos.y - pos.y);
+        
+        if ( (xdif > 0 && ydif < 0) || (xdif < 0 && ydif > 0) ) {
+          stroke(0,137,255);
+          point(pos.x + (xinc*cos(rotangle) + newy*sin(rotangle)),pos.y + (-xinc*sin(rotangle) + newy*cos(rotangle)));
+          //point(pos.x + xinc,pos.y + newy);
+          stroke(0,137,255);
+          point(pos.x + (xinc*cos(rotangle) + newy2*sin(rotangle)),pos.y + (-xinc*sin(rotangle) + newy2*cos(rotangle)));
+        }
+        else {
+          stroke(0,137,255);
+          point(pos.x + (xinc*cos(rotangle) - newy*sin(rotangle)),pos.y + (xinc*sin(rotangle) + newy*cos(rotangle)));
+          //point(pos.x + xinc,pos.y + newy);
+          stroke(0,137,255);
+          point(pos.x + (xinc*cos(rotangle) - newy2*sin(rotangle)),pos.y + (xinc*sin(rotangle) + newy2*cos(rotangle)));
+        }
         
       }
       
@@ -273,12 +298,12 @@ class LaserProjectile extends BuildingProjectile {
       ellipse(newx,newy, 7, 7);
       */
       
-      
+
+
       
   }
- 
-
 }
+
 
 class CrippleProjectile extends BuildingProjectile {
 
