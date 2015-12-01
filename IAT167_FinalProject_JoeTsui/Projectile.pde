@@ -189,14 +189,13 @@ class LaserProjectile extends BuildingProjectile {
   @Override 
     void draw() {
       pushMatrix();
-      stroke(255,0,0);
+      strokeWeight(3);
+      stroke(229,41,41);
       line(pos.x, pos.y, target.pos.x, target.pos.y);
       stroke(0,0,0);
-      
+      noStroke();
    
-      int newx = pos.x + (target.pos.x - pos.x)*.25;
-      int newy = pos.y + (target.pos.y - pos.y)*.25;
-      ellipse(newx,newy, 50, 50);
+      laserEffects();
       
       noStroke();
       popMatrix();
@@ -207,12 +206,75 @@ class LaserProjectile extends BuildingProjectile {
     return new Effect(pos.x, pos.y, effectTime) {
       @Override
         public void drawEffect() {
-        stroke(255, 0, 0);
-        strokeWeight(3);
+        stroke(255, 201, 201, 5);
+        strokeWeight(1);
         line(pos.x, pos.y, target.pos.x, target.pos.y);
         noStroke();
       }
     };
+  }
+  
+  void laserEffects () {
+      float newx, newy, newy2, amp;
+      float theta = 0.00;
+      amp = 5;
+      int edge = (int) sqrt((target.pos.x - pos.x)*(target.pos.x - pos.x) + (target.pos.y - pos.y)*(target.pos.y - pos.y));
+      float dx = (TWO_PI / edge);
+      float x = 0;
+      float rotangle;
+      rotangle = atan(tan((target.pos.y - pos.y)/(target.pos.x - pos.x)));
+      for (int i = 0; i < edge; i++) {
+        newy = sin(x)*amp;
+        newy2 = -sin(x)*amp;
+        x += dx;
+        
+        stroke(0,137,255);
+        point(pos.x + (i*cos(rotangle) - newy*sin(rotangle)),pos.y + (i*sin(rotangle) + newy*cos(rotangle)));
+        stroke(0,137,255);
+        point(pos.x + (i*cos(rotangle) - newy2*sin(rotangle)),pos.y + (i*sin(rotangle) + newy2*cos(rotangle)));
+        
+      }
+      
+    
+    
+      /*
+      fill(255,149,149,15);
+      int newx = (int)(pos.x + (target.pos.x - pos.x)*.25);
+      int newy = (int)(pos.y + (target.pos.y - pos.y)*.25);
+      ellipse(newx,newy, 7, 7);
+      fill(255,149,149,25);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.45);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.45);
+      ellipse(newx,newy, 7, 7);
+      fill(255,149,149,35);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.65);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.65);
+      ellipse(newx,newy, 7, 7);
+      fill(255,149,149,45);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.85);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.85);
+      ellipse(newx,newy, 7, 7);
+      
+      fill(149,206,255,15);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.15);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.15);
+      ellipse(newx,newy, 7, 7);
+      fill(149,206,255,25);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.35);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.35);
+      ellipse(newx,newy, 7, 7);
+      fill(149,206,255,35);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.55);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.55);
+      ellipse(newx,newy, 7, 7);
+      fill(149,206,255,45);
+      newx = (int)(pos.x + (target.pos.x - pos.x)*.75);
+      newy = (int)(pos.y + (target.pos.y - pos.y)*.75);
+      ellipse(newx,newy, 7, 7);
+      */
+      
+      
+      
   }
  
 
