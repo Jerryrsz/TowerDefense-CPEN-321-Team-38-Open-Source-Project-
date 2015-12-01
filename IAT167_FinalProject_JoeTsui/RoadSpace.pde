@@ -11,10 +11,16 @@ class RoadSpace extends Space {
   @Override
     void draw() {
     pushMatrix();
+    
     translate(pos.x, pos.y);
+    
     noStroke();
+    /*
     fill(120, 60, 60);
     rect(0, 0, SPACE_WIDTH, SPACE_HEIGHT);
+    */
+    image(stone, 0, 0);
+    
     popMatrix();
   }
 }

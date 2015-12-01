@@ -7,6 +7,14 @@ final char GRID_ROADSPACE = 'R';
 final char GRID_STARTSPACE = 'S';
 final char GRID_BUILDINGSPACE = 'B';
 final char GRID_WALLSPACE = 'W';
+final  char u = '8';
+final  char d = '2';
+final  char l = '4';
+final  char r = '6';
+final  char ul = '7';
+final  char ur = '9';
+final  char bl = '1';
+final  char br = '3';
 
 final int STATE_READY = 0;
 final int STATE_DEAD = 1;
@@ -57,8 +65,8 @@ final float TOWER_ATTACK_RANGE_LASER = 4.5 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_ARROW = 3 * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_CRIPPLE = 3 * Space.SPACE_WIDTH;
 
-final String TEXT_BUTTON_WAVE = "Next Wave";
-final String TEXT_BUTTON_TOWER = "Tower (t) - " + GOLD_BASEBUILDING_COST + "G";
+final String TEXT_BUTTON_WAVE = "";
+final String TEXT_BUTTON_TOWER = "";
 
 final String[] DESCRIPTION_TOWER = {
   "Click to place a tower", "\n", "Right click to cancel"

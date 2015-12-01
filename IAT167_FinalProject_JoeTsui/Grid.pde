@@ -32,7 +32,7 @@ class Grid {
           break;
         case GRID_SPACE:
         default:
-          gridSpace[i][j] = new Space(j * Space.SPACE_WIDTH, i * Space.SPACE_HEIGHT);
+          gridSpace[i][j] = new Space(j * Space.SPACE_WIDTH, i * Space.SPACE_HEIGHT, square);
           break;
         }
       }

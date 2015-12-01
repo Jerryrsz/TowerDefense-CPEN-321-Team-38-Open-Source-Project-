@@ -22,3 +22,6 @@ class WallSpace extends RoadSpace {
     wall.draw(); 
   }
 }
+
+  
+

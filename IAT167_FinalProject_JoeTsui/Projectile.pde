@@ -247,14 +247,14 @@ class LaserProjectile extends BuildingProjectile {
           stroke(0,137,255);
           point(pos.x + (xinc*cos(rotangle) + newy*sin(rotangle)),pos.y + (-xinc*sin(rotangle) + newy*cos(rotangle)));
           //point(pos.x + xinc,pos.y + newy);
-          stroke(0,137,255);
+          stroke(255,247,0);
           point(pos.x + (xinc*cos(rotangle) + newy2*sin(rotangle)),pos.y + (-xinc*sin(rotangle) + newy2*cos(rotangle)));
         }
         else {
           stroke(0,137,255);
           point(pos.x + (xinc*cos(rotangle) - newy*sin(rotangle)),pos.y + (xinc*sin(rotangle) + newy*cos(rotangle)));
           //point(pos.x + xinc,pos.y + newy);
-          stroke(0,137,255);
+          stroke(255,247,0);
           point(pos.x + (xinc*cos(rotangle) - newy2*sin(rotangle)),pos.y + (xinc*sin(rotangle) + newy2*cos(rotangle)));
         }
         

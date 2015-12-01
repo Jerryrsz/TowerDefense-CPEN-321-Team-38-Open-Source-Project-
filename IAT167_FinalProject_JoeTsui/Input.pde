@@ -38,17 +38,18 @@ class UI {
 
     pushMatrix();
     translate(x, y);
-    fill(210, 210, 210);
-    rect(0, 0, barWidth, barHeight);
+    //fill(210, 210, 210);
+    //rect(0, 0, barWidth, barHeight);
+    image(ui,0,0);
     for (UIPanel panel : panels) {
       if (panel.enabled) panel.draw();
     }
     for (Button button : buttons) {
-      button.draw();
+      //button.draw();
     }
     if (enemyList.size() == 0) {
       fill(0);
-      text("Next wave in " + ((int)((waveTimer / 60.0) * 10) / 10.0) + " seconds.", 635, 100);
+      text( ((int)((waveTimer / 60.0) * 10) / 10.0), 610, 70);
     }
     popMatrix();
     if (selectedEnemy != null) {
@@ -171,9 +172,9 @@ class UI {
 UI setupUI() {
   placeTower = false;
   UI ui = new UI();
-  Button nextWaveButton = getButton(600, 25, TEXT_BUTTON_WAVE, color(240, 225, 60), getNextWaveListener());
+  Button nextWaveButton = getButton(594, 38, TEXT_BUTTON_WAVE, color(240, 225, 60), getNextWaveListener());
   ui.nextWaveBtn = nextWaveButton;
-  Button towerButton = getButton(50, 25, TEXT_BUTTON_TOWER, color(60, 160, 240), getTowerListener());
+  Button towerButton = getButton(18, 38, TEXT_BUTTON_TOWER, color(60, 160, 240), getTowerListener());
   ui.buildingBtn = towerButton;
   UIPanel buildingInfoPanel = getBuildingInfoPanel(175, 5);
   ui.buildingPnl = buildingInfoPanel;
@@ -255,14 +256,14 @@ UIPanel getBuildingInfoPanel(int x, int y) {
       textSize(13);
       if (selectedBuilding.upgradePaths.size () == 3) {
         rect(0, 0, bPanelWidth + bPanelExtWidth, bPanelHeight);
-        fill(0);
+        fill(255);
         text("Upgrade Tower - " + GOLD_BASEUPGRADE_COST + "G: ", 170, 35);
       } else {
         rect(0, 0, bPanelWidth + bPanelExtWidth, bPanelHeight);
-        fill(0);
+        fill(255);
         text("Switch Upgrades - " + GOLD_SWITCHUPGRADE_COST + "G: ", 170, 35);
       }
-      fill(0);
+      fill(255);
       textAlign(LEFT, BOTTOM);
       text("Building", 10, 30);
       text("Damage: " + selectedBuilding.PROJECTILE_DAMAGE, 10, 50);

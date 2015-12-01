@@ -11,6 +11,18 @@ Grid grid = new Grid(gameWidth, gameHeight);
 Player player = new Player();
 UI botUI;
 Node AIPath;
+PImage grass;
+PImage grassu;
+PImage grassd;
+PImage grassl;
+PImage grassr;
+PImage grassul;
+PImage grassur;
+PImage grassbl;
+PImage grassbr;
+
+PImage stone;
+PImage ui;
 
 int gameState;
 int level = 1;
@@ -32,8 +44,20 @@ void setup() {
   int spaceSizeY = Space.SPACE_HEIGHT;
   loadGameLevel(level);
   botUI = setupUI();
-  size(spaceSizeX * gameWidth, (spaceSizeY * gameHeight) + botUI.barHeight);
+  size(spaceSizeX * gameWidth, (spaceSizeY * gameHeight) + botUI.barHeight, P3D);
   setupPImages();
+  
+  grass = loadImage("grass1.gif");
+  grassu = loadImage("u.gif");
+  grassd = loadImage("d.gif");
+  grassl = loadImage("l.gif");
+  grassr = loadImage("r.gif");
+  grassul = loadImage("ul.gif");
+  grassur = loadImage("ur.gif");
+  grassbl = loadImage("bl.gif");
+  grassbr = loadImage("br.gif");
+  stone = loadImage("stone1.gif");
+  ui = loadImage("ui.png");
 }
 
 void resetGame() {
