@@ -422,7 +422,9 @@ void mousePressed() {
 
   if (gameState == GAMESTATE_GAMEPLAY) {
     mousePressedGameplay();
-  } else if (gameState == GAMESTATE_MENU) {
+  }  // instead of going to gameplay screen right away,
+     // we call upon menu in main class 
+  else if (gameState == GAMESTATE_MENU) {
     menu();
   } else {
     resetGame();

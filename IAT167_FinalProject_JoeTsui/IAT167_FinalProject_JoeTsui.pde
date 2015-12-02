@@ -256,9 +256,13 @@ void removePlayerShields() {
   }
 }
 
-
+// draws and creates the main menu with fuctioning buttons
 void menu() {
+  
+  // instantiate the background color
   background(85, 200, 200);
+  
+  // creates the text and visual display of the menu
   textAlign(CENTER, CENTER);
   textSize(80);
   fill(255);
@@ -272,7 +276,10 @@ void menu() {
   text("Start with 7 lives and 1000 gold", width/2 - 200, height/2 + 135);
   text("Start with 5 lives and 750 gold", width/2, height/2 + 135);
   text("Start with 3 lives and 500 gold", width/2 + 200, height/2 + 135);
-    // if the player choses normal mode
+  
+  // creates the actual difficulty buttons that sense mouse left click and begins the game with respective settings
+       
+       // if the player choses normal mode
     if (mouseX > (width/2 - 85) && mouseX < (width/2 + 85) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
       difficulty = normal;
       GOLD_STARTING = 750;

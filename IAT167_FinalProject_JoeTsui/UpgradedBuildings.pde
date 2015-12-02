@@ -14,7 +14,7 @@ class SniperBuilding extends Building {
   @Override
     void setUpgradePaths() {
       upgradePaths.add(TOWER_ID_BASE);
-      upgradePaths.add(TOWER_ID_ARNOLD);
+      upgradePaths.add(TOWER_ID_CRIPPLE);
       upgradePaths.add(TOWER_ID_REMOVE);
   }
 
@@ -232,7 +232,9 @@ class CrippleBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
+    upgradePaths.add(TOWER_ID_BASE);
     upgradePaths.add(TOWER_ID_ARNOLD);
+    upgradePaths.add(TOWER_ID_REMOVE);
   }
 
   @Override
