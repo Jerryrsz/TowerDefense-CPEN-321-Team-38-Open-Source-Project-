@@ -1,0 +1,27 @@
+Tower Defense Scenarios
+Jerry Zhang, Kevin Chan, Quentin Fu, University of British Columbia
+December 1, 2015
+
+
+
+STORY 1 -- Features in Tower Defense:
+As a player, 
+ I want to have more autonomy in the game;
+So that I enjoy the game with more flexibility and diversity.
+
+Scenario S1.1: A difficulty select menu
+Given the game has started and I am directed to the start menu
+When  I click on a difficulty level
+Then  the game will start with the difficulty settings I have selected.
+
+Scenario S1.2: Diversify minions
+Given the game has started,
+  and the enemy wave is approaching;
+When  I begin the next wave,
+Then  more variaty of enemies will appear.
+
+Scenario S1.3: More Tower Options
+Given the game has started,
+  and I need to fortify my defenses,
+When  I select to build a tower
+Then  secondary upgrade options appear after initial upgrade.
