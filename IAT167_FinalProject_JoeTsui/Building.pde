@@ -35,6 +35,8 @@ class Building {
     upgradePaths.add(TOWER_ID_SNIPER);
     upgradePaths.add(TOWER_ID_RAPID);
     upgradePaths.add(TOWER_ID_AOE);
+    upgradePaths.add(TOWER_ID_REMOVE);
+ 
   }
 
   Building upgrade(int TOWER_ID) {
@@ -63,6 +65,9 @@ class Building {
       break;
     case TOWER_ID_ARNOLD:
       tempBuilding = new ArnoldBuilding(this);
+      break;
+    case TOWER_ID_REMOVE:
+      tempBuilding = new Building(this);
       break;
     default:
       return null;

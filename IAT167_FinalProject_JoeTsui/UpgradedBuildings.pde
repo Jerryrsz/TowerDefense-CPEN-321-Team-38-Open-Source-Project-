@@ -13,6 +13,9 @@ class SniperBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
+      upgradePaths.add(TOWER_ID_BASE);
+      upgradePaths.add(TOWER_ID_ARNOLD);
+      upgradePaths.add(TOWER_ID_REMOVE);
   }
 
   @Override
@@ -60,8 +63,9 @@ class RapidBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
-    upgradePaths.add(TOWER_ID_LASER);
-    upgradePaths.add(TOWER_ID_ARNOLD);
+      upgradePaths.add(TOWER_ID_BASE);
+      upgradePaths.add(TOWER_ID_LASER);
+      upgradePaths.add(TOWER_ID_REMOVE);
   
   }
 
@@ -93,7 +97,9 @@ class AOEBuilding extends Building {
 
   @Override
     void setUpgradePaths() {
+    upgradePaths.add(TOWER_ID_BASE);
     upgradePaths.add(TOWER_ID_ARROW);
+    upgradePaths.add(TOWER_ID_REMOVE);
   }
 
   @Override

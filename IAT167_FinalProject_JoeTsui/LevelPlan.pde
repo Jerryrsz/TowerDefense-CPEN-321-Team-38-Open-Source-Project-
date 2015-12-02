@@ -30,6 +30,8 @@ class LevelPlan {
   ArrayList<String> getLevel1() {
     ArrayList<String> levelPlan = new ArrayList<String>();
     /*
+<<<<<<< HEAD
+=======
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     levelPlan.add("       RRRRR             ");
@@ -56,15 +58,15 @@ class LevelPlan {
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     levelPlan.add("              22222      ");
-    levelPlan.add("    22222    6RRRRR2     ");
-    levelPlan.add("2229RRRRR12223R789R2B22  ");
-    levelPlan.add("WRRRR7B9RRRRRRRB23RRRRR1 ");
-    levelPlan.add("88888   888889RRRRR7B9RR1");
-    levelPlan.add("              88888   9RS");
+    levelPlan.add("    22222    6RRRRR42    ");
+    levelPlan.add("2223RRRRR12223Rj89RiB12  ");
+    levelPlan.add("WRRRRuBuRRRRRRRB13RRRRR1 ");
+    levelPlan.add("88888 8 888889RRRRRuBuRR1");
+    levelPlan.add("              88888 8 9RS");
     levelPlan.add("                       88");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
-  
+
   
     return levelPlan;
   }
@@ -79,14 +81,14 @@ class LevelPlan {
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
-    levelPlan.add("                         ");
-    levelPlan.add("                  RRRRR  ");
-    levelPlan.add("         RRR    RRR   R  ");
-    levelPlan.add("        RRBR  RRR   B R  ");
-    levelPlan.add("WRRRRRB R  RRRRB      R  ");
-    levelPlan.add("     RRRR   B RRR   B R  ");
-    levelPlan.add("                RRRRRRRRS");
-    levelPlan.add("                         ");
+    levelPlan.add("                  22222  ");
+    levelPlan.add("         222    23RRRRR4 ");
+    levelPlan.add("        3RRR4 23RRR7p9R4 ");
+    levelPlan.add("22222226RRBR13RRR786BlR4 ");
+    levelPlan.add("WRRRRRBiR79RRRRBj   26R4 ");
+    levelPlan.add("88889RRRR4 9BuRRR123BiR12");
+    levelPlan.add("     8888   8 89RRRRRRRRS");
+    levelPlan.add("                888888888");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     return levelPlan;
@@ -99,16 +101,16 @@ class LevelPlan {
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
-    levelPlan.add("                         ");
-    levelPlan.add("       RRRRR B   BRRRRR  ");
-    levelPlan.add("       R  BRR    RR   R  ");
-    levelPlan.add("    RRRRR   RR  RR    R  ");
-    levelPlan.add("    R   R B  RRRRB  B R  ");
-    levelPlan.add("WRR R B R     RB      R  ");
-    levelPlan.add("  RRR   R   B R     B R  ");
-    levelPlan.add("        RR RRRRR B    RRS");
-    levelPlan.add("         RRR   RRRRRRRR  ");
-    levelPlan.add("                         ");
+    levelPlan.add("       22222 2   222222  ");
+    levelPlan.add("      6RRRRRiB4 6BRRRRR4 ");
+    levelPlan.add("    223Rj9BRRj  3RR789R4 ");
+    levelPlan.add("   6RRRRR4p9RR13RR7 26R4 ");
+    levelPlan.add("2226R7p9RlB49RRRRB46BlR4 ");
+    levelPlan.add("WRRiRlBlR48 29RB78  p6R4 ");
+    levelPlan.add("89RRR486R1 3BiRj 2 6BlR12");
+    levelPlan.add("  888  6RRiRRRRRiB12p3RRS");
+    levelPlan.add("        9RRR789RRRRRRRR79");
+    levelPlan.add("         888   88888888  ");
     levelPlan.add("                         ");
     return levelPlan;
   }
@@ -118,19 +120,19 @@ class LevelPlan {
     levelPlan.add("                         ");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
-    levelPlan.add("                         ");
-    levelPlan.add("      B  B   B RRRRR     ");
-    levelPlan.add("     RRRRRRR  RR  BRR    ");
-    levelPlan.add("     R  R  R BR  B  RRR  ");
-    levelPlan.add("     RB R BR  R       R  ");
-    levelPlan.add("     RRRR  RRRRRRRRR  R  ");
-    levelPlan.add("   B   R  B   R  B RB R  ");
-    levelPlan.add("WRRRR BRR     RB   RRRR  ");
-    levelPlan.add("    R   R   B R     B R  ");
-    levelPlan.add("    RRRRR     R  B    RRS");
-    levelPlan.add("      B      BRR    B R  ");
-    levelPlan.add("               RRRRRRRR  ");
-    levelPlan.add("                         ");
+    levelPlan.add("      2  2   2 22222     ");
+    levelPlan.add("     3B13B126BiRRRRR1    ");
+    levelPlan.add("    6RRRRRRR4kRR7kBRR12  ");
+    levelPlan.add("    6Rj9R7kRlBR76B79RRR4 ");
+    levelPlan.add("    6RBiRlBR1kR1222289R4 ");
+    levelPlan.add("   26RRRR4kRRRRRRRRR16R4 ");
+    levelPlan.add("223B18kR16B789Rj9BuRBiR4 ");
+    levelPlan.add("WRRRRlBRR48 26RB4 6RRRR4 ");
+    levelPlan.add("8889R1pkR4 6BlR7 2 9BuR12");
+    levelPlan.add("   6RRRRR4  83R16B4 p6RRS");
+    levelPlan.add("    89B78   6BRR1p23BiR78");
+    levelPlan.add("      8      89RRRRRRRR4 ");
+    levelPlan.add("               88888888  ");
     return levelPlan;
   }
 
