@@ -48,6 +48,20 @@ class Space {
       //image(TILE_EMPTY[0], 0, 0);  
       if( texture == '8')
         image(grassu, 0, 0);
+      else if ( texture == '2' )
+        image(grassd, 0, 0);
+      else if ( texture == '4' )
+        image(grassl, 0, 0);
+      else if ( texture == '6' )
+        image(grassr, 0, 0);
+      else if ( texture == '7' )
+        image(grassul, 0, 0);
+      else if ( texture == '9' )
+        image(grassur, 0, 0);
+      else if ( texture == '1' )
+        image(grassbl, 0, 0);
+      else if ( texture == '3' )
+        image(grassbr, 0, 0);
       else
         image(grass, 0, 0);
     }

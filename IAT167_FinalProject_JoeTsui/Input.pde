@@ -37,7 +37,7 @@ class UI {
     // Background
 
     pushMatrix();
-    translate(x, y);
+    translate(0, y);
     //fill(210, 210, 210);
     //rect(0, 0, barWidth, barHeight);
     image(ui,0,0);
