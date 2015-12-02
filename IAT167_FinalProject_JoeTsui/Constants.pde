@@ -54,6 +54,7 @@ final int ENEMY_INDEX_BOSS = 4;
 final int ENEMY_INDEX_DEMACIA = 5;
 final int ENEMY_INDEX_CORKI = 6;
 final int ENEMY_INDEX_VOODOO = 7;
+final int ENEMY_INDEX_LEVIATHAN = 8;
 
 final int TOWER_ID_BASE = 0;
 final int TOWER_ID_SNIPER = 1;

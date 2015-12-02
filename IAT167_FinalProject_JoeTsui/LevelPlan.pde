@@ -30,21 +30,23 @@ class LevelPlan {
   ArrayList<String> getLevel1() {
     ArrayList<String> levelPlan = new ArrayList<String>();
     /*
+<<<<<<< HEAD
+=======
     levelPlan.add("                         ");
     levelPlan.add("                         ");
+    levelPlan.add("       RRRRR             ");
+    levelPlan.add("       R789R             ");
+    levelPlan.add("       R456R             ");
+    levelPlan.add("       R123R             ");
+    levelPlan.add("       RRRRR             ");
+    levelPlan.add("                         ");
+    levelPlan.add("              RRRRR      ");
+    levelPlan.add("    RRRRR     R   R B    ");
+    levelPlan.add("WRRRR B RRRRRRRB  RRRRR  ");
+    levelPlan.add("          88  RRRRR B RR ");
+    levelPlan.add("                       RS");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
-    levelPlan.add("                         ");
-    levelPlan.add("                         ");
-    levelPlan.add("             2222222     ");
-    levelPlan.add("   2222222  6BBBBBBB4    ");
-    levelPlan.add("223BBBBBBB123BRRRRRB1222 ");
-    levelPlan.add("BBBBRRRRRBBBBBRj8kRBBBBB1");
-    levelPlan.add("WRRRRBBBRRRRRRRBiBRRRRRBB");
-    levelPlan.add("BBBBBBuBBBBBBBRRRRRBBBRRB");
-    levelPlan.add("888888 888889BBBBBBBuBBRS");
-    levelPlan.add("             8888888 9BBB");
-    levelPlan.add("                      888");
     levelPlan.add("                         ");
     */
     
@@ -64,6 +66,7 @@ class LevelPlan {
     levelPlan.add("                       88");
     levelPlan.add("                         ");
     levelPlan.add("                         ");
+
   
     return levelPlan;
   }
@@ -156,7 +159,7 @@ class LevelPlan {
     int[][] waveNumbers = new int[][] 
     {
       {
-        3, 0, 0, 0, 0, 1, 0, 0
+        3, 0, 0, 0, 0, 1, 0, 0, 1
       }
       , {
         3, 2, 0, 0, 0, 0, 0, 0
