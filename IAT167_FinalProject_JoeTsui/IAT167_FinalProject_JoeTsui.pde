@@ -266,25 +266,25 @@ void menu() {
   text("Normal", width/2, height/2 + 100);
   text("Hard", width/2 + 200, height/2 + 100);
   textSize(10);
-  text("Start with 7 lives and 700 gold", width/2 - 200, height/2 + 135);
-  text("Start with 5 lives and 500 gold", width/2, height/2 + 135);
-  text("Start with 3 lives and 300 gold", width/2 + 200, height/2 + 135);
+  text("Start with 7 lives and 1000 gold", width/2 - 200, height/2 + 135);
+  text("Start with 5 lives and 750 gold", width/2, height/2 + 135);
+  text("Start with 3 lives and 500 gold", width/2 + 200, height/2 + 135);
     // if the player choses normal mode
     if (mouseX > (width/2 - 85) && mouseX < (width/2 + 85) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
       difficulty = normal;
-      GOLD_STARTING = 500;
+      GOLD_STARTING = 750;
       resetGame();
       gameState = GAMESTATE_GAMEPLAY;
     }  // if the player choses easy mode 
     else if (mouseX > (width/2 - 285) && mouseX < (width/2 - 115) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
       difficulty = easy;
-      GOLD_STARTING = 700;
+      GOLD_STARTING = 1000;
       resetGame();
       gameState = GAMESTATE_GAMEPLAY;
     }  // if the player choses hard mode
     else if(mouseX > (width/2 + 115) && mouseX < (width/2 + 285) && mouseY < (height/2 + 160) && mouseY > (height/2 + 60) && mouseButton == LEFT) {
       difficulty = hard;
-      GOLD_STARTING = 300;
+      GOLD_STARTING = 500;
       resetGame();
       gameState = GAMESTATE_GAMEPLAY;
     }
