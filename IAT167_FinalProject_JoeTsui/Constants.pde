@@ -63,6 +63,7 @@ final int TOWER_ID_LASER = 4;
 final int TOWER_ID_ARROW = 5;
 final int TOWER_ID_CRIPPLE = 6;
 final int TOWER_ID_ARNOLD = 7;
+final int TOWER_ID_REMOVE = 8;
 
 final float TOWER_ATTACK_RANGE_BASE = 3.5  * Space.SPACE_WIDTH;
 final float TOWER_ATTACK_RANGE_RANGE = 7 * Space.SPACE_WIDTH;
@@ -102,6 +103,12 @@ final String[] DESCRIPTION_CRIPPLE = {
 final String[] DESCRIPTION_ARNOLD = {
   "GG tower", "\n", "Get to the chopper. Now."
 };
+final String[] DESCRIPTION_REMOVE = {
+  "Sell tower", "\n", "Goodbye~"
+};
+final String[] DESCRIPTION_BASE = {
+  "Basic Tower", "\n", "Back to the basics..."
+};
 final String DESCRIPTION_GRUNT1 = "A lowly grunt."; 
 final String DESCRIPTION_GRUNT2 = "Paid $10.25/hr";  
 final String DESCRIPTION_ZERG1 = "Very fast."; 
@@ -135,7 +142,7 @@ final String[] TIPS_LEVEL4 = {
 final float TARGETED_DAMAGE_AMP = 1.1;
 
 final String[] TOWER_ID_NAMES = {
-  "Stock", "Range", "Speed", "AOE", "Laser", "Arrow", "Cripple", "ARNOLD"
+  "Basic", "Range", "Speed", "AOE", "Laser", "Arrow", "Cripple", "Arnold", "Sell"
 };
 
 final int GAMESTATE_GAMEPLAY = 0;

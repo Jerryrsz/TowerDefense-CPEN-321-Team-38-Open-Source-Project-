@@ -32,6 +32,7 @@ PImage gverti;
 PImage stone;
 PImage stoneb;
 PImage ui;
+PImage shield;
 
 int gameState;
 int level = 1;
@@ -74,6 +75,8 @@ void setup() {
   grear = loadImage("[.png");
   ghori = loadImage("hori.png");
   gverti = loadImage("verti.png");
+  
+  shield = loadImage("shield.png");
 }
 
 void resetGame() {

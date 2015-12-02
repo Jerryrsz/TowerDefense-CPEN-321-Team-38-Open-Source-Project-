@@ -49,7 +49,7 @@ class UI {
     }
     if (enemyList.size() == 0) {
       fill(0);
-      text( ((int)((waveTimer / 60.0) * 10) / 10.0), 610, 70);
+      //text( ((int)((waveTimer / 60.0) * 10) / 10.0), 610, 70);
     }
     popMatrix();
     if (selectedEnemy != null) {
@@ -82,7 +82,7 @@ class UI {
     pushMatrix();
     translate(statBarX, statBarY);
     fill(255, 220, 100);
-    fill(0);
+    fill(255);
     textAlign(LEFT, BOTTOM);
     textSize(14);
     text("Gold: " + player.gold, 10, 25);
@@ -101,13 +101,13 @@ class UI {
   void drawShields() {
     pushMatrix();
     translate(10, 10);
-    fill(85, 85, 200, 200);
+    //fill(85, 85, 200, 200);
     if (difficulty == easy) {
-      rect(0, 0, 220, 30);
+      //rect(0, 0, 220, 30);
     } else if (difficulty == normal) {
-      rect(0, 0, 150, 30);
+      //rect(0, 0, 150, 30);
     } else if (difficulty == hard) {
-      rect(0, 0, 95, 30);
+      //rect(0, 0, 95, 30);
     }
     int shieldSpace = 30;
     translate(shieldSpace / 2, 15);
@@ -115,6 +115,7 @@ class UI {
     strokeWeight(1);
     for (int i = 0; i < playerShields; i++) {
       pushMatrix();
+      /*
       fill(255, 225, 50);
       beginShape();
       curveVertex(-50, -40);
@@ -125,6 +126,8 @@ class UI {
       curveVertex(0, -12);
       curveVertex(50, -40);
       endShape(CLOSE);
+      */
+      image(shield,0,0);
       popMatrix();
       translate(shieldSpace, 0);
     }
@@ -133,7 +136,7 @@ class UI {
   }
 
   void displayScore() {
-    fill(0);
+    fill(255);
     textSize(20);
     textAlign(LEFT, CENTER);
     text("Score: " + player.score, width - 150, height / 24);
@@ -248,7 +251,7 @@ UIPanel getBuildingInfoPanel(int x, int y) {
       public void drawPanel() {
       final int bPanelX = 20;
       final int bPanelY = 5;
-      final int bPanelWidth = 185;
+      final int bPanelWidth = 255;
       final int bPanelExtWidth = 150;
       final int bPanelHeight = botUI.barHeight - (bPanelY * 2);
 
@@ -328,6 +331,13 @@ void mouseOver() {
           } else if (button.text == TOWER_ID_NAMES[7]) {
             drawPopup(DESCRIPTION_CRIPPLE);
             hoverUpgradeIndex = 6;
+          } else if (button.text == TOWER_ID_NAMES[8]) {
+            drawPopup(DESCRIPTION_REMOVE);
+            hoverUpgradeIndex = 7;
+          }
+            else if (button.text == TOWER_ID_NAMES[0]) {
+            drawPopup(DESCRIPTION_BASE);
+            hoverUpgradeIndex = 0;
           }
         }
       }
@@ -578,6 +588,7 @@ void drawTipPopup(String[] text, int xSpace, int ySpace) {
 void drawPopup(String[] text) {
 
   textSize(13);
+  fill(255);
 
   int popupHeight = (text.length + 1) * 13;
   float stringWidth = 0;

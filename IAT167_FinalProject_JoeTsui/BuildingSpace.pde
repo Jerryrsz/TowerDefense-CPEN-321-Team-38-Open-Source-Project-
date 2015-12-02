@@ -19,9 +19,16 @@ class BuildingSpace extends Space {
   }  
 
   void upgradeBuilding(int TOWER_ID) {
-    buildingList.remove(building);
-    building = building.upgrade(TOWER_ID);
-    buildingList.add(building);
+    
+    if ( TOWER_ID == 8 ){
+      buildingList.remove(building);
+      this.building = null;
+    }
+    else {
+      buildingList.remove(building);
+      building = building.upgrade(TOWER_ID);
+      buildingList.add(building);
+    }
   }
 
   boolean addBuilding(Building building) {
