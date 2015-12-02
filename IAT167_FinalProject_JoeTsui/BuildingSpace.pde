@@ -1,6 +1,7 @@
 class BuildingSpace extends Space {
 
   Building building;
+  char texture;
 
   public BuildingSpace() {
     this(0, 0);
@@ -9,6 +10,12 @@ class BuildingSpace extends Space {
   public BuildingSpace(int x, int y) {
     super(x, y);
     this.building = null;
+  }
+
+  public BuildingSpace(int x, int y, char texture) {
+    super(x, y);
+    this.building = null;
+    this.texture = texture;
   }  
 
   void upgradeBuilding(int TOWER_ID) {
@@ -34,9 +41,12 @@ class BuildingSpace extends Space {
   void drawSpace() {
     pushMatrix();
     translate(pos.x, pos.y);
+    /*
     noStroke();
     fill(190, 190, 190);
-    rect(0, 0, SPACE_WIDTH, SPACE_HEIGHT);  
+    rect(0, 0, SPACE_WIDTH, SPACE_HEIGHT); 
+   */
+    image(stoneb, 0, 0); 
     popMatrix();
   }
 }

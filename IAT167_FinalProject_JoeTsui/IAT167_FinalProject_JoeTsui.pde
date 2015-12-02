@@ -21,7 +21,16 @@ PImage grassur;
 PImage grassbl;
 PImage grassbr;
 
+PImage ghat;
+PImage gcup;
+PImage glear;
+PImage grear;
+PImage ghori;
+PImage gverti;
+
+
 PImage stone;
+PImage stoneb;
 PImage ui;
 
 int gameState;
@@ -57,7 +66,14 @@ void setup() {
   grassbl = loadImage("bl.gif");
   grassbr = loadImage("br.gif");
   stone = loadImage("stone1.gif");
+  stoneb = loadImage("stoneb.png");
   ui = loadImage("ui.png");
+  ghat = loadImage("n.png");
+  gcup = loadImage("u.png");
+  glear = loadImage("].png");
+  grear = loadImage("[.png");
+  ghori = loadImage("hori.png");
+  gverti = loadImage("verti.png");
 }
 
 void resetGame() {

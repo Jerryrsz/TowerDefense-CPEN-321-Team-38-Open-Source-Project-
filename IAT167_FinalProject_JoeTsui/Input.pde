@@ -378,11 +378,6 @@ void mouseOver() {
               title = "Voodoo";
               description1 = DESCRIPTION_VOODOO1;
               description2 = DESCRIPTION_VOODOO2;
-            }
-            else if (enemy.getClass() == Leviathan.class) {
-              title = "Leviathan";
-              description1 = DESCRIPTION_LEVIATHAN1;
-              description2 = DESCRIPTION_LEVIATHAN2;
             }else {
               title = "";
               description1 = "";

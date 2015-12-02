@@ -42,6 +42,18 @@ class Space {
         image(grassbl, 0, 0);
       else if ( texture == '3' )
         image(grassbr, 0, 0);
+      else if ( texture == 'u' )
+        image(ghat, 0, 0);
+      else if ( texture == 'i' )
+        image(gcup, 0, 0);
+      else if ( texture == 'j' )
+        image(glear, 0, 0);
+      else if ( texture == 'k' )
+        image(grear, 0, 0);
+      else if ( texture == 'p' )
+        image(ghori, 0, 0);
+      else if ( texture == 'l' )
+        image(gverti, 0, 0);
       else
         image(grass, 0, 0);
     } else {
@@ -62,6 +74,18 @@ class Space {
         image(grassbl, 0, 0);
       else if ( texture == '3' )
         image(grassbr, 0, 0);
+      else if ( texture == 'u' )
+        image(ghat, 0, 0);
+      else if ( texture == 'i' )
+        image(gcup, 0, 0);
+      else if ( texture == 'j' )
+        image(glear, 0, 0);
+      else if ( texture == 'k' )
+        image(grear, 0, 0);
+      else if ( texture == 'p' )
+        image(ghori, 0, 0);
+      else if ( texture == 'l' )
+        image(gverti, 0, 0);
       else
         image(grass, 0, 0);
     }

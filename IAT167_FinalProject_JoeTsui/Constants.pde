@@ -16,6 +16,13 @@ final  char ur = '9';
 final  char bl = '1';
 final  char br = '3';
 
+final char hat = 'u';
+final char cup = 'i';
+final char lear = 'j';
+final char rear = 'k';
+final char hori = 'p';
+final char verti = 'l';
+
 final int STATE_READY = 0;
 final int STATE_DEAD = 1;
 final int STATE_REMOVE = 2;
@@ -36,7 +43,6 @@ final int GOLD_BOSS_DROP = 500;
 final int GOLD_DEMACIA_DROP = 1000;
 final int GOLD_CORKI_DROP = 100;
 final int GOLD_VOODOO_DROP = 75;
-final int GOLD_LEVIATHAN_DROP = 5000;
 
 final int SCORE_SHIELD = 250;
 
@@ -48,7 +54,6 @@ final int ENEMY_INDEX_BOSS = 4;
 final int ENEMY_INDEX_DEMACIA = 5;
 final int ENEMY_INDEX_CORKI = 6;
 final int ENEMY_INDEX_VOODOO = 7;
-final int ENEMY_INDEX_LEVIATHAN = 8;
 
 final int TOWER_ID_BASE = 0;
 final int TOWER_ID_SNIPER = 1;
@@ -111,10 +116,8 @@ final String DESCRIPTION_DEMACIA1 = "A troll with hugh gold drop";
 final String DESCRIPTION_DEMACIA2 = "have fun";
 final String DESCRIPTION_CORKI1 = "An acrobat performer.";
 final String DESCRIPTION_CORKI2 = "it's gigantic";
-final String DESCRIPTION_VOODOO1 = "A charlatan that heals nearby minions.";
+final String DESCRIPTION_VOODOO1 = "Charlatan that heals nearby minions.";
 final String DESCRIPTION_VOODOO2 = "it's maroon";
-final String DESCRIPTION_LEVIATHAN1 = "The boss behind the boss";
-final String DESCRIPTION_LEVIATHAN2 = "has shield and regen";
 
 final String[] TIPS_LEVEL1 = {
   "Place towers on the grid!", "Click on one to select it,", "Upgrade your towers!"
