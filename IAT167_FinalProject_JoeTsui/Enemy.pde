@@ -790,6 +790,228 @@ public class Voodoo extends Enemy {
     popMatrix();
   }
 }
+class Leviathan extends Enemy {
+
+  
+  
+  
+  
+  int MAX_SHIELD = 20;
+  int currentShield = 0;
+  float shieldPercent = 1;
+  int actionRadius = 125;
+  float healAmount = .02;
+  int actionTimer = 0;
+  int ACTION_WAIT_TIME = 120;
+  int recoveryTimer = 0;
+  int RECOVERY_TIME = 60;
+
+  public Leviathan(Node node) {
+    super(node, 1);
+  }
+
+  public Leviathan(Node node, int buffFactor) {
+    super(node, buffFactor);
+    this.BASE_MAX_HEALTH = 27500;
+    this.GOLD_DROP = GOLD_SHIELDBRO_DROP;
+    this.speed = .3;
+    this.radius = 30;
+    setMaxAndCurrHealth(BASE_MAX_HEALTH * buffFactor);
+    this.MAX_SHIELD = (int)(BASE_MAX_HEALTH * .6);
+    this.currentShield = MAX_SHIELD;
+    this.bodyColor = color(102, 0, 204);
+    this.actionTimer = ACTION_WAIT_TIME;
+  }
+
+  @Override
+    void update() {
+    if (state == STATE_READY) {
+      if (frameCount % 4 == 0) {
+        if (currentShield < MAX_SHIELD) {
+          currentShield += 1;
+          shieldPercent = currentShield / (float) MAX_SHIELD;
+        }
+      }
+    }
+    if (state == STATE_READY) {
+      move();
+      if (actionTimer <= 0) {
+        if (actionTimer == 0) {
+          recoveryTimer = RECOVERY_TIME;
+          actionTimer--;
+        }
+        if (recoveryTimer == 0) {
+          actionTimer = ACTION_WAIT_TIME;
+        }
+        healNearbyEnemies();
+        recoveryTimer--;
+      } else {
+        actionTimer--;
+      }
+    } else if (state == STATE_DEAD) {
+      if (timer == TIME_IN_STATE_DEAD) {
+        state = STATE_REMOVE;
+      }
+      actionTimer = ACTION_WAIT_TIME;
+    }
+    timer++;
+    super.update();
+  }
+
+  @Override
+    void takeDamage(int damage) {
+    if (state == STATE_READY) {
+      addTextEffect(damage + "", color(255, 250, 250), pos.x, pos.y + 5, 60, LEFT, 10 + (damage / 50));
+      if (currentShield > 0) {
+        currentShield -= damage * .6;
+        damage = (int)(damage * .4);
+        if (currentShield < 0) {
+          damage += -currentShield;
+          currentShield = 0;
+        }
+        shieldPercent = currentShield / (float) MAX_SHIELD;
+      }
+      super.takeDamage(damage);
+      healthPercent = currentHealth / (float)maxHealth;
+      if (state == STATE_DEAD) {
+        player.gold += this.GOLD_DROP;
+      }
+    }
+  }
+  
+ void healNearbyEnemies() {
+    if (recoveryTimer % 15 == 0) {
+      for (Enemy enemy : enemyList) {
+        if (PVector.dist(enemy.pos, pos) < actionRadius) {
+          if (enemy != this) {
+            healEnemy(enemy);
+          }
+        }
+      }
+    }
+  }
+
+  void healEnemy(Enemy enemy) {
+    int healedAmount = (int)(enemy.maxHealth * healAmount);
+    addTextEffect("+" + healedAmount, color(0, 255, 0), enemy.pos.x, enemy.pos.y, 30, LEFT);
+    enemy.currentHealth += healedAmount;
+    if (enemy.currentHealth > enemy.maxHealth) {
+      enemy.currentHealth = enemy.maxHealth;
+    }
+  }
+  
+  
+  
+ @Override
+    void drawHealthBar() {
+       noFill();
+    stroke(0);
+    strokeWeight(2);
+    float healthBarWidth = Space.SPACE_WIDTH * .8;    
+    rect(-healthBarWidth/2.0, -healthBarWidth/1.7, healthBarWidth, healthBarWidth/6.0);
+    noStroke();
+    fill(255, 0, 0);
+    int HEALTH_SHIELD_AMOUNT = MAX_SHIELD + BASE_MAX_HEALTH;
+    float healthAmount = healthBarWidth * healthPercent * BASE_MAX_HEALTH / HEALTH_SHIELD_AMOUNT;
+    float shieldAmount = healthBarWidth * shieldPercent * MAX_SHIELD / HEALTH_SHIELD_AMOUNT;
+    rect(-healthBarWidth/2.0, -healthBarWidth/1.7, healthAmount, healthBarWidth/6.0);
+    fill(220, 220, 255);
+    rect(-healthBarWidth/2.0 + healthAmount, -healthBarWidth/1.7, shieldAmount, healthBarWidth/6.0);
+  }
+
+  
+ 
+   @Override
+    void drawEnemy() {
+    if (actionTimer < 0) {
+      float effectPercent = 1 - (recoveryTimer / (float)RECOVERY_TIME);
+      fill(0, 128, 0, 25 + (50 * effectPercent));
+      float effectWidth = actionRadius * 2 * ((effectPercent * .25) + .95);
+      ellipse(0, 0, effectWidth, effectWidth);
+    }
+    pushMatrix();
+    if (state == STATE_READY) {
+      float translationY = abs(sin(timer / (5 - (speed/1.5))) * radius * .25);
+      translate(0, translationY);
+    }
+  
+
+    drawBase();
+    drawHat();
+    popMatrix();
+  }
+@Override
+void drawBase(){
+      float alphaFactor = 255;
+    if (state == STATE_DEAD) {
+      alphaFactor = 255 * (1 - (timer / (float) TIME_IN_STATE_DEAD));
+    }
+
+    pushMatrix();
+    translate(0, radius * .2);
+    noStroke();
+    strokeWeight(1);
+    fill(bodyColor, alphaFactor);
+    // Body
+    ellipse(0, 0, radius * 2, radius * 1.8);
+    beginShape();
+    vertex(0, -radius * .9);
+    vertex(radius * .9, -radius * 1.1);
+    vertex(radius, 0);
+    endShape();
+
+    // Eyes
+    fill(0, alphaFactor);
+    ellipse(radius / 3, -radius / 10, radius / 2, radius / 2);
+    ellipse(-radius * 2 / 3, -radius / 10, radius / 2, radius / 2);
+    fill(255, alphaFactor);
+    ellipse(radius / 3, -radius / 10, radius / 3, radius / 3);
+    ellipse(-radius * 2 / 3, -radius / 10, radius / 3, radius / 3);
+    popMatrix();
+
+    // Mouth
+    noFill();
+    stroke(0, alphaFactor);
+  //  curve(-radius, -radius/2, -radius * 2 / 3, radius * 2 / 3, -radius / 6, radius * 2 / 3, radius, -radius/2);
+   // curve(-radius, -radius/2, -radius / 6, radius * 2 / 3, radius / 3, radius * 2 / 3, radius, -radius/2);
+  ellipse(-radius/6, radius*2/3, radius/6, radius/5);
+    
+}
+  @Override
+    void drawHat() {
+    float alphaFactor = 255;
+    if (state == STATE_DEAD) {
+      alphaFactor = 255 * (1 - (timer / (float) TIME_IN_STATE_DEAD));
+    }
+
+    pushMatrix();
+    translate(0, -radius * .3);
+    stroke(0, alphaFactor);
+    fill(255, 255, 50, alphaFactor);
+    beginShape();
+    vertex(-radius, 0);
+    vertex(-radius * 1.25, -radius);
+    vertex(-radius * .65, -radius * .65);
+    vertex(0, -radius * 1.25);
+    vertex(radius * .65, -radius * .65);
+    vertex(radius * 1.25, -radius);
+    vertex(radius, 0);
+    curveVertex(radius * 1.25, -radius);
+    //curveVertex(radius, 0);
+    //curveVertex(-radius, 0);
+    curveVertex(-radius * 1.25, -radius);
+    endShape();
+    fill(0, 102, 0, alphaFactor);
+    ellipse(-radius * 1.25, -radius, radius * .25, radius * .25);
+    ellipse(0, -radius * 1.25, radius * .25, radius * .25);
+    ellipse(radius * 1.25, -radius, radius * .25, radius * .25);
+    fill(110, 50, 50, alphaFactor);
+    ellipse(0, -radius * .5, radius * .5, radius * .5);
+    noStroke();
+    popMatrix();
+  }
+}
+
 class Wave {
 
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -826,8 +1048,11 @@ class Wave {
         case ENEMY_INDEX_BOSS:
           enemies.add(new Boss(AIPath, level));
           break;
-          case ENEMY_INDEX_VOODOO:
+        case ENEMY_INDEX_VOODOO:
           enemies.add(new Voodoo(AIPath, level));
+          break;
+        case ENEMY_INDEX_LEVIATHAN:
+          enemies.add(new Leviathan(AIPath, level));
           break;
         }
       }
